@@ -1,5 +1,5 @@
 import textract
-from data import pathtofile, toc, chapter_start
+from data import pathtofile, chapter_names, chapter_start
 
 
 
