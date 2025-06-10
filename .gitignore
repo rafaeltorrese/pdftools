@@ -4,6 +4,6 @@ data.py
 __pycache__
 .env
 *.txt
-
+*.csv
 # emacs files
 *~
