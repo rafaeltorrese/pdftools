@@ -1,14 +1,17 @@
+import os
 import pandas as pd
 from tabula import read_pdf
 
+from data import pathtofile, chapter_names
 
-path = ''
-filename = ''
-my_file = f'{path}\{filename}'
+
+
+filename = os.path.join(*pathtofile, f'{chapter_names[0]}.pdf')
+
 
 
 tabular_data = read_pdf(
-    my_file, 
+    filename, 
     pages='all',
     multiple_tables=True,
     lattice=True,
@@ -17,5 +20,17 @@ tabular_data = read_pdf(
     pandas_options={'header': None}
     )
 
-for n, table in enumerate(tabular_data, 1):
-    pd.DataFrame(table).iloc[:, :4].to_csv(f'table_{str(n).zfill(3)}.csv')
+
+# print(f'Number tables: {len(tabular_data)}')
+print(tabular_data[2])
+
+# for n, table in enumerate([tabular_data[0], tabular_data[1], tabular_data[5]], 1):
+#     (
+#         pd.DataFrame(table)
+#         .iloc[:, 1:-1]
+#         .to_csv(
+#             f'{chapter_names[0]}_{str(n).zfill(3)}.csv', 
+#             index=False, 
+#             # encoding='latin-1',
+#             )
+#         )
